@@ -16,7 +16,9 @@
         <activiti:formProperty id="personalWelcomeTime" name="Personal Welcome Time" type="date"></activiti:formProperty>
       </extensionElements>
     </userTask>
-    <sequenceFlow id="personalIntroPath" name="Years of experience &gt; 4" sourceRef="decision" targetRef="personalIntro"></sequenceFlow>
+    <sequenceFlow id="personalIntroPath" name="Years of experience &gt; 4" sourceRef="decision" targetRef="personalIntro">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${yearsOfExperience > 4}]]></conditionExpression>
+    </sequenceFlow>
     <scriptTask id="automatedIntro" name="Generic and automated data entry" scriptFormat="javascript" activiti:autoStoreVariables="false">
       <script>var dateAsString = new Date().toString();
 execution.setVariable("autoWelcomeTime", dateAsString);</script>
